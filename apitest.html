@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Characters:</h1>
+    <ul></ul>
+    <script>
+    fetch('https://thronesapi.com/api/v2/Characters')
+        .then(response => response.json())
+        .then(data => {
+          
+            data.forEach(Character => {
+            const markup =   `<li> ${Character.firstName + " " + Character.lastName}</li>`;
+            
+          document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
+            
+          });
+         
+        })
+        .catch(error => console.error(error));
+      
+      </script>
+</body>
+</html>
